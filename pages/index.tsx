@@ -1,18 +1,58 @@
+import { css, cx } from "@emotion/css"
+import { NextPage } from "next"
 import Head from "next/head"
+import Title from "@components/elements/title"
+import Card from "@components/card/card"
+import Fade from "@components/animated/fade"
+import { useToggle } from "@hooks/toggle"
+import { Button } from "@styles/button"
+import { randomNumber } from "@utils/helpers"
 
-export default function Home() {
+const styles = () => css``
+
+const titleStyles = css`
+  & {
+    display: flex;
+    justify-content: center;
+    flex-flow: column wrap;
+    align-items: center;
+    margin: 2rem 0;
+  }
+`
+
+const HomePage: NextPage = () => {
+  const { on, toggle } = useToggle()
+  const exitOptions = { x: on ? `${randomNumber(100)}%` : 0 }
+  const initialOptions = { x: on ? 0 : `${randomNumber(100)}%` }
+
   return (
-    <div>
+    <div className={cx(styles())}>
       <Head>
-        <title>Create Next App</title>
+        <title>reactive animations</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>hello</h1>
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet nobis quia neque nisi
-        asperiores quidem illum sapiente architecto earum fuga, autem doloribus aliquid nostrum ipsa
-        ut fugit maiores reiciendis officia!
-      </p>
+      <Title
+        mainTitle="welcome to"
+        subTitle="reactive animations"
+        className={titleStyles}
+        animatedOptions={{
+          initial: { opacity: 0, y: "-100%" },
+          animate: {
+            opacity: 1,
+            y: 0,
+          },
+        }}
+      />
+      <Button onClick={toggle}>Show</Button>
+      <Fade
+        isAnimated={on}
+        exitOptions={exitOptions}
+        initialOptions={initialOptions}
+      >
+        <Card />
+      </Fade>
     </div>
   )
 }
+
+export default HomePage
