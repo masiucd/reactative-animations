@@ -76,9 +76,13 @@ const GlobalStyles = () => {
           --max-width: 970px;
           /* Utils */
           --border-radius: 4px;
+<<<<<<< HEAD
           --border-radius-M: 6px;
           --border-radius-L: 8px;
           --border-radius-XL: 12px;
+=======
+          --border-radius-secondary: 6px;
+>>>>>>> (feat): SSR for emotion css
           /* transitions */
           --main-trans: 300ms ease-in all;
           --secondary-transition: 500ms ease-in all;
