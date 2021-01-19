@@ -8,7 +8,7 @@ const Main = styled.main`
   max-width: var(--max-width);
   margin: 2.125rem auto;
   flex: 1 1 auto;
-  min-height: 65vh;
+  min-height: 72vh;
 `
 
 const Layout: FC = ({ children }) => {

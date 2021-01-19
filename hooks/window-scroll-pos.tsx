@@ -24,7 +24,7 @@ const useWindowScrollPosition = () => {
     }
   }, [listener])
 
-  return { scrollY, scrollX }
+  return { y: scrollY, x: scrollX }
 }
 
 export { useWindowScrollPosition }

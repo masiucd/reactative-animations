@@ -1,23 +1,24 @@
 import { css, cx } from "@emotion/css"
+import { motion } from "framer-motion"
 import React from "react"
 import Nav from "./nav"
 
 const headerStyles = css`
   & {
-    background-color: var(--dark2);
+    background-color: var(--textColor);
     color: var(--background);
     padding: 1rem 0.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 2;
   }
 `
 
 const Header = () => {
   return (
-    <header className={cx(headerStyles)}>
-      <div className="title">
-        <h3>Reactive animations</h3>
-      </div>
+    <motion.header className={cx(headerStyles)}>
       <Nav />
-    </header>
+    </motion.header>
   )
 }
 

@@ -109,12 +109,15 @@ const GlobalStyles = () => {
           --background: var(--white);
           --lineColor: var(--green);
           --stroke-color: var(--red);
+          --highlight-color: var(--red);
         }
+
         body[data-theme="dark"] {
           --textColor: var(--white);
           --background: var(--dark);
           --lineColor: var(--green);
           --stroke-color: var(--blueGreen);
+          --highlight-color: var(--yellow);
         }
 
         h1,
@@ -153,9 +156,18 @@ const GlobalStyles = () => {
           font-size: 1.25rem;
         }
 
-        small,
-        .text_small {
+        small {
           font-size: 0.8rem;
+        }
+
+        ul,
+        li {
+          list-style: none;
+        }
+
+        a {
+          text-decoration: none;
+          color: var(----background);
         }
       `}
     />
