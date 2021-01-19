@@ -7,8 +7,14 @@ import Fade from "@components/animated/fade"
 import { useToggle } from "@hooks/toggle"
 import { Button } from "@styles/button"
 import { randomNumber } from "@utils/helpers"
+// import { useWindowScrollPosition } from "@hooks/window-scroll-pos"
 
-const styles = () => css``
+const styles = () => css`
+  .show-btn {
+    display: block;
+    margin: 2rem auto;
+  }
+`
 
 const titleStyles = css`
   & {
@@ -24,6 +30,8 @@ const HomePage: NextPage = () => {
   const { on, toggle } = useToggle()
   const exitOptions = { x: on ? `${randomNumber(100)}%` : 0 }
   const initialOptions = { x: on ? 0 : `${randomNumber(100)}%` }
+  // const { scrollX, scrollY } = useWindowScrollPosition()
+  // console.log(scrollX, scrollY)
 
   return (
     <div className={cx(styles())}>
@@ -43,7 +51,9 @@ const HomePage: NextPage = () => {
           },
         }}
       />
-      <Button onClick={toggle}>Show</Button>
+      <Button className="show-btn" onClick={toggle}>
+        {on ? "Hide" : "Show"}
+      </Button>
       <Fade
         isAnimated={on}
         exitOptions={exitOptions}

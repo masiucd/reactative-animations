@@ -8,11 +8,7 @@ const NavStyles = styled.nav`
 `
 
 const Nav = () => {
-  return (
-    <NavStyles>
-      <div className="logo"></div>
-    </NavStyles>
-  )
+  return <NavStyles>{/* <div className="logo"></div> */}</NavStyles>
 }
 
 export default Nav

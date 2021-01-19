@@ -2,10 +2,13 @@ import { FC } from "react"
 import GlobalStyles from "../../styles/global-styles"
 import styled from "@emotion/styled"
 import Header from "./header"
+import Footer from "./footer"
 
 const Main = styled.main`
   max-width: var(--max-width);
-  margin: 1.125rem auto;
+  margin: 2.125rem auto;
+  flex: 1 1 auto;
+  min-height: 65vh;
 `
 
 const Layout: FC = ({ children }) => {
@@ -14,6 +17,7 @@ const Layout: FC = ({ children }) => {
       <GlobalStyles />
       <Header />
       <Main>{children}</Main>
+      <Footer />
     </>
   )
 }
