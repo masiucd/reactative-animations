@@ -5,12 +5,12 @@ import Nav from "./nav"
 
 const headerStyles = css`
   & {
-    background-color: var(--textColor);
+    background-color: var(--nav-color);
     color: var(--background);
     padding: 1rem 0.5rem;
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: 4;
   }
 `
 

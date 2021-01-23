@@ -3,6 +3,7 @@ import styled from "@emotion/styled"
 import Image from "next/image"
 import { Button } from "@styles/button"
 import { Option } from "./option"
+import { useToggle } from "@hooks/toggle"
 
 const CardButton = styled(Button)`
   background-image: var(--gradient-bg1); /*fallback for old browsers*/
@@ -106,6 +107,7 @@ export const CardHeader: FC<CardHeaderProps> = ({
   toggleLiked,
   userOptions,
 }) => {
+  const { on, toggle } = useToggle()
   return (
     <CardHeaderStyles>
       <button className="heart" onClick={toggleLiked}>
@@ -131,7 +133,7 @@ export const CardHeader: FC<CardHeaderProps> = ({
         <CardButton>hire me</CardButton>
       </ImageContent>
 
-      <Option />
+      <Option on={on} toggle={toggle} />
     </CardHeaderStyles>
   )
 }

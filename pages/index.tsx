@@ -7,6 +7,7 @@ import Fade from "@components/animated/fade"
 import { useToggle } from "@hooks/toggle"
 import { Button } from "@styles/button"
 import { randomNumber } from "@utils/helpers"
+import { Accordian } from "@components/animated/accordian"
 
 const styles = () => css`
   .show-btn {
@@ -49,7 +50,7 @@ const HomePage: NextPage = () => {
         }}
       />
       <Button className="show-btn" onClick={toggle}>
-        {on ? "Hide" : "Show"}
+        {on ? "hide card" : "show card"}
       </Button>
       <Fade
         isAnimated={on}
@@ -58,6 +59,8 @@ const HomePage: NextPage = () => {
       >
         <Card />
       </Fade>
+
+      <Accordian />
     </div>
   )
 }

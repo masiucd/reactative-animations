@@ -45,6 +45,7 @@ const GlobalStyles = () => {
           --button-text: var(--dark);
           --link-color: var(--dark2);
           --stroke-color: var(--dark2);
+          --nav-color: var(--dark2);
           /* Styles */
           --line: solid 1px var(--lineColor);
           /* Elevations */
@@ -76,13 +77,10 @@ const GlobalStyles = () => {
           --max-width: 970px;
           /* Utils */
           --border-radius: 4px;
-<<<<<<< HEAD
           --border-radius-M: 6px;
           --border-radius-L: 8px;
           --border-radius-XL: 12px;
-=======
           --border-radius-secondary: 6px;
->>>>>>> (feat): SSR for emotion css
           /* transitions */
           --main-trans: 300ms ease-in all;
           --secondary-transition: 500ms ease-in all;
@@ -114,6 +112,7 @@ const GlobalStyles = () => {
           --lineColor: var(--green);
           --stroke-color: var(--red);
           --highlight-color: var(--red);
+          --nav-color: var(--dark2);
         }
 
         body[data-theme="dark"] {
@@ -122,6 +121,7 @@ const GlobalStyles = () => {
           --lineColor: var(--green);
           --stroke-color: var(--blueGreen);
           --highlight-color: var(--yellow);
+          --nav-color: var(--white);
         }
 
         h1,

@@ -1,6 +1,10 @@
 import React from "react"
 import styled from "@emotion/styled"
-import { useToggle } from "@hooks/toggle"
+
+interface OptionProps {
+  on: boolean
+  toggle: () => void
+}
 
 interface OptionStylesProps {
   on: number
@@ -10,10 +14,24 @@ const OptionStyles = styled.button<OptionStylesProps>`
   right: 0.5rem;
   top: 0.5rem;
   cursor: pointer;
-  display: block;
   background: none;
   border: none;
   outline: none;
+  transition: 400ms ease-in-out all;
+
+  ${({ on }) =>
+    on
+      ? `
+    display: flex;
+    width: 3rem;
+    justify-content: space-between;
+    padding: 1rem 0;
+  `
+      : `
+        dislay:block;
+        padding: .4rem 0;
+      `}
+
   span {
     background-color: var(--background);
     border-radius: 50%;
@@ -21,7 +39,7 @@ const OptionStyles = styled.button<OptionStylesProps>`
     width: 0.5rem;
     height: 0.5rem;
     padding: 0.2rem;
-    margin: 0.2rem 0;
+    margin: 0.4rem 0;
     &:first-of-type {
     }
     &:nth-of-type(2) {
@@ -31,8 +49,7 @@ const OptionStyles = styled.button<OptionStylesProps>`
   }
 `
 
-export const Option = () => {
-  const { on, toggle } = useToggle()
+export const Option = ({ on, toggle }: OptionProps) => {
   return (
     <OptionStyles onClick={toggle} on={on ? 1 : 0}>
       <span></span>

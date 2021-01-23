@@ -1,12 +1,12 @@
 import { css, cx } from "@emotion/css"
 import styled from "@emotion/styled"
-import { useWindowScrollPosition } from "@hooks/window-scroll-pos"
+import { useScrollY } from "@hooks/scroll-y"
 import { above } from "@styles/media-query"
 import { motion } from "framer-motion"
 import Link from "next/link"
 
 const NavStyles = styled(motion.nav)`
-  background-color: var(--dark2);
+  background-color: var(--nav-color);
   color: var(--background);
   box-shadow: var(--shadowLg);
   padding: 0.5rem;
@@ -25,14 +25,14 @@ const NavStyles = styled(motion.nav)`
   }
 `
 
-const titleStyles = (isScrolling: boolean) => css`
+const titleStyles = (isScrollingDown: boolean) => css`
   & {
     display: flex;
 
     flex: 2 1 60%;
-    justify-content: ${isScrolling ? "flex-end" : "flex-start"};
+    justify-content: ${isScrollingDown ? "flex-end" : "flex-start"};
     strong {
-      margin-right: ${isScrolling ? "1rem" : "0"};
+      margin-right: ${isScrollingDown ? "1rem" : "0"};
     }
   }
 `
@@ -50,13 +50,11 @@ const strongStyles = css`
 `
 
 const Nav = () => {
-  const { y } = useWindowScrollPosition()
-
-  const isScrolling = y + 16 > 40
+  const { scrollDirection } = useScrollY()
 
   return (
     <NavStyles>
-      <div className={cx("title", titleStyles(isScrolling))}>
+      <div className={cx("title", titleStyles(scrollDirection === "down"))}>
         <Link href="/">
           <a>
             <motion.strong layout className={cx(strongStyles)}>
@@ -72,13 +70,13 @@ const Nav = () => {
           </Link>
         </li>
         <li>
-          <Link href="/">
-            <a>home</a>
+          <Link href="/gallery">
+            <a>gallery</a>
           </Link>
         </li>
         <li>
-          <Link href="/">
-            <a>home</a>
+          <Link href="/posts">
+            <a>posts</a>
           </Link>
         </li>
       </ul>

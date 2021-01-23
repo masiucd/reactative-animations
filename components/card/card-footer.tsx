@@ -21,23 +21,38 @@ const CardFooter = () => {
   return (
     <CardFooterStyles>
       <div className="box box-1">
-        <Image
-          src="/icons/twitter.svg"
-          width="100%"
-          height="100%"
-          alt="medium"
-        />
+        <a
+          href="https://mobile.twitter.com/MasiuCD"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Image
+            src="/icons/twitter.svg"
+            width="100%"
+            height="100%"
+            alt="medium"
+          />
+        </a>
       </div>
       <div className="box box-2">
-        <Image src="/icons/insta.svg" width="100%" height="100%" alt="medium" />
+        <a href="https://github.com/masiucd" target="_blank" rel="noreferrer">
+          <Image
+            src="/icons/insta.svg"
+            width="100%"
+            height="100%"
+            alt="medium"
+          />
+        </a>
       </div>
       <div className="box box-3">
-        <Image
-          src="/icons/github-color.svg"
-          width="100%"
-          height="100%"
-          alt="medium"
-        />
+        <a target="_blank" rel="noreferrer" href="https://github.com/masiucd">
+          <Image
+            src="/icons/github-color.svg"
+            width="100%"
+            height="100%"
+            alt="medium"
+          />
+        </a>
       </div>
     </CardFooterStyles>
   )
