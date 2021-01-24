@@ -8,6 +8,7 @@ import { useToggle } from "@hooks/toggle"
 import { Button } from "@styles/button"
 import { randomNumber } from "@utils/helpers"
 import { Accordian } from "@components/animated/accordian"
+import { LoadingSpinner } from "@components/common/loading-spinner"
 
 const styles = () => css`
   .show-btn {
@@ -26,17 +27,33 @@ const titleStyles = css`
   }
 `
 
+const loadingStyles = css`
+  .stop-loading {
+    margin: 0 auto;
+    display: block;
+  }
+`
+
 const HomePage: NextPage = () => {
   const { on, toggle } = useToggle()
+  const { on: isLoading, onToFalse: setLoadingToFalse } = useToggle(true)
   const exitOptions = { x: on ? `${randomNumber(100)}%` : 0 }
   const initialOptions = { x: on ? 0 : `${randomNumber(100)}%` }
 
-  return (
+  return isLoading ? (
+    <div className={loadingStyles}>
+      <LoadingSpinner />
+      <Button className="stop-loading" onClick={setLoadingToFalse}>
+        Stop Loading
+      </Button>
+    </div>
+  ) : (
     <div className={cx(styles())}>
       <Head>
         <title>reactive animations</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <Title
         mainTitle="welcome to"
         subTitle="reactive animations"
