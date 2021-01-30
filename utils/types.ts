@@ -5,3 +5,7 @@ export interface Post {
 }
 
 export type ScrollPos = "idle" | "up" | "down"
+export interface Offset {
+  height: number
+  top: number
+}

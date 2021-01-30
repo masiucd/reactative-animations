@@ -1,6 +1,6 @@
 export const randomNumber = (num = 10) => Math.floor(Math.random() * num)
 
-export const arrayMoveMutate = <T>(xs: T[], from: number, to: number) => {
+const arrayMoveMutate = <T>(xs: T[], from: number, to: number) => {
   const startIndex = from < 0 ? xs.length + from : from
   if (startIndex >= 0 && startIndex < xs.length) {
     const endIndex = to < 0 ? xs.length + to : to
