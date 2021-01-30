@@ -11,12 +11,12 @@ export const Button = styled.button`
   transition: var(--main-trans);
   border-radius: var(--border-radius);
   display: block;
-  &:active {
+  /* &:active {
     border: 2px solid var(--stroke-color);
     position: relative;
     top: 6px;
     box-shadow: var(--shadowXl);
-  }
+  } */
   &:hover {
     box-shadow: var(--shadowXl);
     background-color: var(--textColor);
