@@ -1,27 +1,34 @@
+import { SignIn } from "@components/sign-in-modal/sign-in"
 import { css, cx } from "@emotion/css"
 import styled from "@emotion/styled"
 import { useScrollY } from "@hooks/scroll-y"
-import { above } from "@styles/media-query"
+import { useToggle } from "@hooks/toggle"
+import { Button } from "@styles/button"
 import { motion } from "framer-motion"
 import Link from "next/link"
+import React from "react"
+import NavList from "./nav-list"
 
 const NavStyles = styled(motion.nav)`
   background-color: var(--nav-color);
   color: var(--background);
   box-shadow: var(--shadowLg);
   padding: 0.5rem;
-
   display: flex;
-  .nav-list {
-    display: none;
-    @media ${above.tablet} {
-      width: 20rem;
-      justify-content: space-between;
-      margin-left: auto;
-      flex: 1 1 40%;
-      display: flex;
-      padding: 0.5rem;
-    }
+  min-height: 8rem;
+  align-items: center;
+`
+
+const btnStyles = css`
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 6.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  &:hover {
+    background-color: var(--green);
+    color: var(--dark2);
   }
 `
 
@@ -51,9 +58,13 @@ const strongStyles = css`
 
 const Nav = () => {
   const { scrollDirection } = useScrollY()
-
+  const { on, toggle } = useToggle()
   return (
     <NavStyles>
+      <Button className={cx(btnStyles)} onClick={toggle}>
+        {" "}
+        Sign in{" "}
+      </Button>
       <div className={cx("title", titleStyles(scrollDirection === "down"))}>
         <Link href="/">
           <a>
@@ -63,23 +74,9 @@ const Nav = () => {
           </a>
         </Link>
       </div>
-      <ul className="nav-list">
-        <li>
-          <Link href="/">
-            <a>home</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/gallery">
-            <a>gallery</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/posts">
-            <a>posts</a>
-          </Link>
-        </li>
-      </ul>
+      <NavList />
+
+      <SignIn toggle={toggle} on={on} />
     </NavStyles>
   )
 }

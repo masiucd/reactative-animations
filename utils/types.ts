@@ -9,3 +9,8 @@ export interface Offset {
   height: number
   top: number
 }
+
+export interface NavLink {
+  name: string
+  path: string
+}

@@ -1,3 +1,4 @@
+import { cx } from "@emotion/css"
 import { AnimatePresence, motion } from "framer-motion"
 import React from "react"
 
@@ -5,26 +6,30 @@ import React from "react"
 
 interface FadeProps {
   isAnimated: boolean
-  initialOptions?: Record<string, number | string>
-  exitOptions?: Record<string, number | string>
-  transitionOptions?: Record<string, number | string>
+  className?: string
+  options?: {
+    initial?: Record<string, number | string>
+    animate?: Record<string, number | string>
+    exit?: Record<string, number | string>
+    transition?: Record<string, number | string>
+  }
 }
 
 const Fade: React.FC<FadeProps> = ({
   children,
   isAnimated,
-  exitOptions,
-  initialOptions,
-  transitionOptions,
+  options,
+  className,
 }) => {
   return (
     <AnimatePresence>
       {isAnimated && (
         <motion.section
-          initial={{ opacity: 0, ...initialOptions }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0, ...exitOptions }}
-          transition={{ ...transitionOptions }}
+          className={cx(className, "fade")}
+          initial={{ opacity: 0, ...options?.initial }}
+          animate={{ opacity: 1, ...options?.animate }}
+          exit={{ opacity: 0, ...options?.exit }}
+          transition={{ ...options?.transition }}
         >
           {children}
         </motion.section>
