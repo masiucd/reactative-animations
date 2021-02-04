@@ -71,8 +71,10 @@ const HomePage: NextPage = () => {
       </Button>
       <Fade
         isAnimated={on}
-        exitOptions={exitOptions}
-        initialOptions={initialOptions}
+        options={{
+          exit: exitOptions,
+          initial: initialOptions,
+        }}
       >
         <Card />
       </Fade>
