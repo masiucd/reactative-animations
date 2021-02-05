@@ -14,3 +14,9 @@ export interface NavLink {
   name: string
   path: string
 }
+
+export interface FormInput {
+  id: string
+  type: string
+  name: string
+}

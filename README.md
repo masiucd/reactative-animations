@@ -3,10 +3,13 @@
 ## Table of Contents
 
 - [About](#about)
-- [Getting Started](#getting_started)
+- [Tools](#tools)
 
 ## About <a name = "about"></a>
 
-Write about 1-2 paragraphs describing the purpose of your project.
+Animations with React and Framer motion
 
-## Getting Started <a name = "getting_started"></a>
+<!-- Exit before enter on AnimatePrescence -->
+<!-- fiinsih one animation before doing the next animation -->
+
+## Tools <a name="tools"></a>

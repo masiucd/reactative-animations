@@ -1,4 +1,4 @@
-import { SignIn } from "@components/sign-in-modal/sign-in"
+import { RegisterSignInForm } from "@components/register-sign-in/register-sign-in-form"
 import { css, cx } from "@emotion/css"
 import styled from "@emotion/styled"
 import { useScrollY } from "@hooks/scroll-y"
@@ -59,6 +59,7 @@ const strongStyles = css`
 const Nav = () => {
   const { scrollDirection } = useScrollY()
   const { on, toggle } = useToggle()
+
   return (
     <NavStyles>
       <Button className={cx(btnStyles)} onClick={toggle}>
@@ -76,7 +77,7 @@ const Nav = () => {
       </div>
       <NavList />
 
-      <SignIn toggle={toggle} on={on} />
+      <RegisterSignInForm toggle={toggle} on={on} />
     </NavStyles>
   )
 }
