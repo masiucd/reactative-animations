@@ -4,6 +4,7 @@ import Image from "next/image"
 import { Button } from "@styles/button"
 import { Option } from "./option"
 import { useToggle } from "@hooks/toggle"
+import SideNote from "./side-note"
 
 const CardButton = styled(Button)`
   background-image: var(--gradient-bg1); /*fallback for old browsers*/
@@ -117,23 +118,26 @@ export const CardHeader: FC<CardHeaderProps> = ({
       <ImageContent>
         <div className="img-wrapper">
           <Image
-            id="model-img"
-            src="/model2.jpg"
+            className="model-img"
+            src="/me.jpg"
             alt="profile"
             width="100%"
             height="100%"
           />
         </div>
-        <strong>{userOptions?.name ? userOptions.name : "Linda Smith"}</strong>
-        <p>{userOptions?.title ? userOptions.title : "Senior designer"}</p>
+        <strong>
+          {userOptions?.name ? userOptions.name : "Marcell Ciszek Druzunski"}
+        </strong>
+        <p>{userOptions?.title ? userOptions.title : "developer"}</p>
         <small>
-          <span className="small-capture">designs</span>
-          {userOptions?.contact ? userOptions.contact : "@lindaMas"}
+          <span className="small-capture">hey hey</span>
+          {userOptions?.contact ? userOptions.contact : "@masiucd"}
         </small>
-        <CardButton>hire me</CardButton>
+        <CardButton>contact me</CardButton>
       </ImageContent>
 
       <Option on={on} toggle={toggle} />
+      <SideNote on={on} />
     </CardHeaderStyles>
   )
 }

@@ -7,6 +7,7 @@ import Form from "@components/elements/form"
 import { useToggle } from "@hooks/toggle"
 import { above } from "@styles/media-query"
 import { registerFormData, signInFormData } from "@utils/initial-data"
+import { AnimatePresence, motion, AnimateSharedLayout } from "framer-motion"
 
 interface Props {
   on: boolean
@@ -24,7 +25,7 @@ const modalStyles = css`
   place-content: center;
 `
 
-const ModalBody = styled.div`
+const ModalBody = styled(motion.div)`
   background-color: var(--white);
   position: relative;
   max-width: var(--max-width);
@@ -90,42 +91,52 @@ const registerFormStyles = css`
 export const RegisterSignInForm = ({ on, toggle }: Props) => {
   const { on: isRegisterForm, toggle: toggleIsRegisterForm } = useToggle()
   return (
-    <Fade
-      isAnimated={on}
-      className={modalStyles}
-      options={{
-        initial: { y: 100 },
-        animate: { y: 0 },
-        exit: { y: 100 },
-        transition: { delay: 0.3 },
-      }}
-    >
-      <ModalBody>
-        <button
-          className={cx(buttonStyles, "close-modal-btn")}
-          onClick={toggle}
+    <AnimateSharedLayout>
+      <Fade
+        isAnimated={on}
+        className={modalStyles}
+        exitBeforeEnter
+        options={{
+          initial: { y: 100 },
+          animate: { y: 0 },
+          exit: { y: 100 },
+        }}
+      >
+        <ModalBody
+          initial={{ opacity: 0 }}
+          exit={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          layout
         >
-          <span>X</span>
-        </button>
+          <button
+            className={cx(buttonStyles, "close-modal-btn")}
+            onClick={toggle}
+          >
+            <span>X</span>
+          </button>
 
-        <h3 className="title">{isRegisterForm ? "sign up" : "sign in"}</h3>
-
-        {isRegisterForm ? (
-          <Form
-            inputs={registerFormData}
-            isRegisterForm={isRegisterForm}
-            toggleIsRegisterForm={toggleIsRegisterForm}
-            className={registerFormStyles}
-          />
-        ) : (
-          <Form
-            inputs={signInFormData}
-            isRegisterForm={isRegisterForm}
-            className={signInFormStyles}
-            toggleIsRegisterForm={toggleIsRegisterForm}
-          />
-        )}
-      </ModalBody>
-    </Fade>
+          <h3 className="title">{isRegisterForm ? "sign up" : "sign in"}</h3>
+          <AnimatePresence exitBeforeEnter>
+            {isRegisterForm ? (
+              <Form
+                key="sign"
+                inputs={registerFormData}
+                isRegisterForm={isRegisterForm}
+                toggleIsRegisterForm={toggleIsRegisterForm}
+                className={registerFormStyles}
+              />
+            ) : (
+              <Form
+                key="signup"
+                inputs={signInFormData}
+                isRegisterForm={isRegisterForm}
+                className={signInFormStyles}
+                toggleIsRegisterForm={toggleIsRegisterForm}
+              />
+            )}
+          </AnimatePresence>
+        </ModalBody>
+      </Fade>
+    </AnimateSharedLayout>
   )
 }

@@ -57,7 +57,7 @@ const styles = css`
     }
   }
 
-  #model-img {
+  .model-img {
     border-radius: 50%;
     display: block;
     position: relative;

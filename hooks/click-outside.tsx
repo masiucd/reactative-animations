@@ -1,5 +1,7 @@
 import { RefObject, useEffect } from "react"
 
+type Event = MouseEvent | TouchEvent
+
 const useClickOutside = <T extends HTMLElement = HTMLElement>(
   ref: RefObject<T>,
   handler: (event: Event) => void,
@@ -19,8 +21,8 @@ const useClickOutside = <T extends HTMLElement = HTMLElement>(
     document.addEventListener("touchstart", listener)
 
     return () => {
-      document.removeEventListener("touchstart", listener)
       document.removeEventListener("mousedown", listener)
+      document.removeEventListener("touchstart", listener)
     }
   }, [handler, ref])
 }

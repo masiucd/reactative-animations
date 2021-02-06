@@ -32,20 +32,24 @@ const switchStyles = css`
   color: var(--textColor);
   text-shadow: 1px 1px var(--dark2);
   cursor: pointer;
-  &::after {
-    content: "";
-    background-color: var(--green);
-    position: absolute;
-    width: 100%;
-    height: 0.1rem;
-    left: 0;
-    bottom: -2px;
-    transform: rotate(1deg);
-    transition: var(--main-trans);
-  }
-  &:hover {
+  span {
+    display: inline-block;
+    position: relative;
     &::after {
-      transform: rotate(0);
+      content: "";
+      background-color: var(--green);
+      position: absolute;
+      width: 100%;
+      height: 0.225rem;
+      left: 0;
+      bottom: -2px;
+      transform: rotate(1deg);
+      transition: var(--main-trans);
+    }
+    &:hover {
+      &::after {
+        transform: rotate(0);
+      }
     }
   }
 `
@@ -58,6 +62,9 @@ const Form: React.FC<FormProps> = ({
 }) => {
   return (
     <StyledForm
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { delay: 0.2 } }}
       className={cx(formStyles, className)}
       onSubmit={(e) => {
         e.preventDefault()
@@ -82,9 +89,8 @@ const Form: React.FC<FormProps> = ({
         className={cx(switchStyles, "switch-form")}
         onClick={toggleIsRegisterForm}
       >
-        {isRegisterForm
-          ? "sign in, you know the game"
-          : "register like 100000 other devs"}
+        {isRegisterForm ? "already have a account?" : "need a account?"}{" "}
+        <span>sign {isRegisterForm ? "in" : "up"}</span>
       </button>
     </StyledForm>
   )

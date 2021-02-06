@@ -7,10 +7,11 @@ import React from "react"
 interface FadeProps {
   isAnimated: boolean
   className?: string
+  exitBeforeEnter?: boolean
   options?: {
-    initial?: Record<string, number | string>
-    animate?: Record<string, number | string>
-    exit?: Record<string, number | string>
+    initial?: Record<string, number | string | Record<string, string | number>>
+    animate?: Record<string, number | string | Record<string, string | number>>
+    exit?: Record<string, number | string | Record<string, string | number>>
     transition?: Record<string, number | string>
   }
 }
@@ -20,9 +21,12 @@ const Fade: React.FC<FadeProps> = ({
   isAnimated,
   options,
   className,
+  exitBeforeEnter,
 }) => {
   return (
-    <AnimatePresence>
+    <AnimatePresence
+      exitBeforeEnter={exitBeforeEnter ? exitBeforeEnter : false}
+    >
       {isAnimated && (
         <motion.section
           layout

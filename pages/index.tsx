@@ -2,16 +2,16 @@ import { css, cx } from "@emotion/css"
 import { NextPage } from "next"
 import Head from "next/head"
 import Title from "@components/elements/title"
-import Card from "@components/card/card"
-import Fade from "@components/animated/fade"
 import { useToggle } from "@hooks/toggle"
 import { Button } from "@styles/button"
-import { randomNumber } from "@utils/helpers"
-import { Accordian } from "@components/animated/accordian"
+import { Accordion } from "@components/animated/accordion"
 import { LoadingSpinner } from "@components/common/loading-spinner"
+import React from "react"
+import Showcase from "@components/card/showcase"
 
 const styles = () => css`
-  .show-btn {
+  .show-btn,
+  .show-text-btn {
     display: block;
     margin: 2rem auto;
   }
@@ -35,10 +35,7 @@ const loadingStyles = css`
 `
 
 const HomePage: NextPage = () => {
-  const { on, toggle } = useToggle()
   const { on: isLoading, onToFalse: setLoadingToFalse } = useToggle(true)
-  const exitOptions = { x: on ? `${randomNumber(100)}%` : 0 }
-  const initialOptions = { x: on ? 0 : `${randomNumber(100)}%` }
 
   return isLoading ? (
     <div className={loadingStyles}>
@@ -66,20 +63,10 @@ const HomePage: NextPage = () => {
           },
         }}
       />
-      <Button className="show-btn" onClick={toggle}>
-        {on ? "hide card" : "show card"}
-      </Button>
-      <Fade
-        isAnimated={on}
-        options={{
-          exit: exitOptions,
-          initial: initialOptions,
-        }}
-      >
-        <Card />
-      </Fade>
 
-      <Accordian />
+      <Showcase />
+
+      <Accordion />
     </div>
   )
 }

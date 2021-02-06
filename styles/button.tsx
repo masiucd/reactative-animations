@@ -8,7 +8,6 @@ export const resetButtonStyles = css`
 `
 
 export const Button = styled.button`
-  ${resetButtonStyles};
   padding: 0.4rem 0.6rem;
   font-size: 1.2rem;
   border: 2px solid var(--textColor);
@@ -17,6 +16,9 @@ export const Button = styled.button`
   outline: 0;
   border-radius: var(--border-radius);
   display: block;
+  cursor: pointer;
+  transition: var(--main-trans);
+  border: 2px solid var(--textColor);
   &:hover {
     box-shadow: var(--shadowXl);
     background-color: var(--textColor);

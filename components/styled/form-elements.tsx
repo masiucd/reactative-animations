@@ -1,7 +1,8 @@
 import styled from "@emotion/styled"
 import { resetButtonStyles } from "@styles/button"
+import { motion } from "framer-motion"
 
-export const StyledForm = styled.form``
+export const StyledForm = styled(motion.form)``
 
 export const Label = styled.label`
   display: flex;

@@ -23,7 +23,7 @@ const btnStyles = css`
   position: absolute;
   top: 1rem;
   right: 1rem;
-  width: 6.5rem;
+  width: 4.5rem;
   font-size: 0.9rem;
   cursor: pointer;
   &:hover {
@@ -63,8 +63,7 @@ const Nav = () => {
   return (
     <NavStyles>
       <Button className={cx(btnStyles)} onClick={toggle}>
-        {" "}
-        Sign in{" "}
+        Sign in
       </Button>
       <div className={cx("title", titleStyles(scrollDirection === "down"))}>
         <Link href="/">
