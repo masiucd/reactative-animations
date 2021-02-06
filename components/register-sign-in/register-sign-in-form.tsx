@@ -81,7 +81,8 @@ const registerFormStyles = css`
     .submit-wrapper {
       grid-column: 3/6;
       padding: 0;
-      align-self: end;
+      align-self: center;
+      height: 3rem;
     }
   }
 `

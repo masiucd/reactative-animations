@@ -1,7 +1,9 @@
 import { cx, css } from "@emotion/css"
+import { useClickOutside } from "@hooks/click-outside"
 import { useToggle } from "@hooks/toggle"
 import { Button } from "@styles/button"
 import { motion } from "framer-motion"
+import { useRef } from "react"
 
 const styles = (on: boolean) => css`
   & {
@@ -21,9 +23,13 @@ const styles = (on: boolean) => css`
 `
 
 export const Accordian = () => {
-  const { on, toggle } = useToggle()
+  const { on, toggle, onToFalse: closeCard } = useToggle()
+  const ref = useRef(null)
+
+  useClickOutside(ref, closeCard)
+
   return (
-    <div className={cx(styles(on))}>
+    <div className={cx(styles(on))} ref={ref}>
       <Button onClick={toggle}>{on ? "hide text" : "show text"}</Button>
       <motion.div layout>
         {on && (

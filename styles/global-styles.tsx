@@ -172,7 +172,10 @@ const GlobalStyles = () => {
 
         a {
           text-decoration: none;
-          color: var(----background);
+          color: var(--background);
+        }
+        button {
+          outline: none;
         }
       `}
     />

@@ -36,6 +36,7 @@ export const SubmitButton = styled.button`
   display: block;
   transition: var(--main-trans);
   outline: 0;
+  height: 3rem;
   &:hover {
     background-color: var(--red);
     color: var(--background);
