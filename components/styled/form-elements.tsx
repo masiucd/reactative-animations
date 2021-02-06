@@ -18,6 +18,8 @@ export const Input = styled.input`
   border-radius: var(--border-radius);
   box-shadow: var(--shadowLg);
   padding: 0 0.5rem;
+  font-size: 1rem;
+  outline: 0;
 `
 export const SubmitButton = styled.button`
   /* ${resetButtonStyles} */

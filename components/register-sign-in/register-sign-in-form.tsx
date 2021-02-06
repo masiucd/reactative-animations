@@ -3,9 +3,10 @@ import Fade from "@components/animated/fade"
 import { css, cx } from "@emotion/css"
 import styled from "@emotion/styled"
 import { resetButtonStyles } from "@styles/button"
-import { FormInput } from "@utils/types"
 import Form from "@components/elements/form"
 import { useToggle } from "@hooks/toggle"
+import { above } from "@styles/media-query"
+import { registerFormData, signInFormData } from "@utils/initial-data"
 
 interface Props {
   on: boolean
@@ -30,6 +31,13 @@ const ModalBody = styled.div`
   margin: 0 auto;
   border-radius: var(--border-radius);
   padding: 1rem;
+  .title {
+    color: var(--textColor);
+    padding-left: 0.5rem;
+    border-bottom: 2px solid var(--green);
+    display: inline-block;
+    font-size: 3rem;
+  }
 `
 
 const buttonStyles = css`
@@ -47,41 +55,35 @@ const buttonStyles = css`
   }
 `
 
-// TODO: handle sign in and sign up form with special animations
-
-const signInFormData: FormInput[] = [
-  {
-    id: "email-input",
-    type: "email",
-    name: "email",
-  },
-  {
-    id: "password-input",
-    type: "text",
-    name: "username",
-  },
-]
-const registerFormData: FormInput[] = [
-  {
-    id: "username-input",
-    type: "text",
-    name: "username",
-  },
-  {
-    id: "email-input",
-    type: "email",
-    name: "email",
-  },
-  {
-    id: "password-input",
-    type: "text",
-    name: "username",
-  },
-]
-
 const signInFormStyles = css`
   width: 45rem;
   height: 19rem;
+`
+const registerFormStyles = css`
+  grid-gap: 1rem;
+  padding-bottom: 3rem;
+  display: flex;
+  flex-flow: column wrap;
+
+  @media ${above.mobileL} {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    label[for="username"] {
+      grid-column: 1/3;
+    }
+    label[for="email"] {
+      grid-column: 3/6;
+    }
+    label[for="password"] {
+      grid-column: 1/3;
+    }
+    .submit-wrapper {
+      grid-column: 3/6;
+      padding: 0;
+      align-self: end;
+    }
+  }
 `
 
 export const RegisterSignInForm = ({ on, toggle }: Props) => {
@@ -105,13 +107,14 @@ export const RegisterSignInForm = ({ on, toggle }: Props) => {
           <span>X</span>
         </button>
 
-        <h3>{isRegisterForm ? "sign up" : "sign in"}</h3>
+        <h3 className="title">{isRegisterForm ? "sign up" : "sign in"}</h3>
 
         {isRegisterForm ? (
           <Form
             inputs={registerFormData}
             isRegisterForm={isRegisterForm}
             toggleIsRegisterForm={toggleIsRegisterForm}
+            className={registerFormStyles}
           />
         ) : (
           <Form

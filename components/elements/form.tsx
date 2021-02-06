@@ -40,7 +40,13 @@ const switchStyles = css`
     height: 0.1rem;
     left: 0;
     bottom: -2px;
-    transform: rotate(2deg);
+    transform: rotate(1deg);
+    transition: var(--main-trans);
+  }
+  &:hover {
+    &::after {
+      transform: rotate(0);
+    }
   }
 `
 
@@ -69,7 +75,9 @@ const Form: React.FC<FormProps> = ({
           />
         </Label>
       ))}
-      <SubmitButton>{isRegisterForm ? "sign up" : "login"}</SubmitButton>
+      <div className="submit-wrapper">
+        <SubmitButton>{isRegisterForm ? "sign up" : "login"}</SubmitButton>
+      </div>
       <button
         className={cx(switchStyles, "switch-form")}
         onClick={toggleIsRegisterForm}
