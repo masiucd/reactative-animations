@@ -57,8 +57,17 @@ const buttonStyles = css`
 `
 
 const signInFormStyles = css`
-  width: 45rem;
-  height: 19rem;
+  width: 15rem;
+  @media ${above.mobileL} {
+    width: 25rem;
+  }
+  @media ${above.tablet} {
+    width: 31em;
+  }
+  @media ${above.tabletL} {
+    width: 40rem;
+    height: 19rem;
+  }
 `
 const registerFormStyles = css`
   grid-gap: 1rem;

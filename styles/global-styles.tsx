@@ -29,7 +29,7 @@ const GlobalStyles = () => {
           --lightGrey: #f2f4f6;
           --transparentDark: rgba(0, 0, 0, 0.05);
           --transparentDark2: rgba(0, 0, 0, 0.1);
-          --transparentDark3: rgba(0, 0, 0, 0.06);
+          --transparentDark3: rgba(0, 0, 0, 0.16);
           --transparentDark4: rgba(0, 0, 0, 0.56);
           /* Define Colors intentions */
           --primary: var(--green);
