@@ -40,7 +40,11 @@ const HomePage: NextPage = () => {
   return isLoading ? (
     <div className={loadingStyles}>
       <LoadingSpinner />
-      <Button className="stop-loading" onClick={setLoadingToFalse}>
+      <Button
+        data-cy="stop-loading-btn"
+        className="stop-loading"
+        onClick={setLoadingToFalse}
+      >
         Stop Loading
       </Button>
     </div>
