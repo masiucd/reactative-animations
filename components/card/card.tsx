@@ -74,7 +74,7 @@ const styles = css`
 const Card: React.FC<CardProps> = ({ className, userOptions }) => {
   const { on: isLiked, toggle } = useToggle()
   return (
-    <StyledCard className={cx(styles, className)}>
+    <StyledCard className={cx(styles, className, "show-case-card")}>
       <CardHeader
         isLiked={isLiked}
         toggleLiked={toggle}

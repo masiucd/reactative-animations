@@ -20,7 +20,7 @@ const titleStyles = css`
     position: absolute;
     bottom: 0;
     left: 0;
-    background-image: url("https://wesbos.com/static/blackgrit-15c168539fb7109ce300574e7b4b0732.png");
+    /* background-image: url("https://wesbos.com/static/blackgrit-15c168539fb7109ce300574e7b4b0732.png"); */
     background-repeat: none;
   }
 `
