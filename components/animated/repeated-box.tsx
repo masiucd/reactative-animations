@@ -18,7 +18,9 @@ const RepeatedBox = ({ showAnnoyingBox }: RepeatedBoxProps) => {
   return (
     <Fade isAnimated={showAnnoyingBox}>
       <Box
+        data-testid="repeated-box"
         initial={{ x: 0 }}
+        className="box"
         animate={{
           x: 300,
           rotate: 120,

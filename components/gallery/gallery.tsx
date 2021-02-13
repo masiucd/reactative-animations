@@ -64,6 +64,7 @@ export const Gallery = () => {
       animate="animate"
       exit="exit"
       variants={variants}
+      data-testid="gallery-grid"
     >
       {images.map((image) => (
         <Image

@@ -24,13 +24,13 @@ const title: React.FC<titleProps> = ({
 }) => {
   return (
     <motion.section
-      className={cx(titleStyles, className)}
-      // initial={{ opacity: 0, y: "-100%" }}
-      // animate={{
-      //   opacity: 1,
-      //   y: 0,
-      // }}
-      // transition={{ ease: "anticipate" }}
+      className={cx(titleStyles, className, "main-title")}
+      initial={{ opacity: 0, y: "-100%" }}
+      animate={{
+        opacity: 1,
+        y: 0,
+      }}
+      transition={{ ease: "anticipate" }}
       {...animatedOptions}
     >
       <h1>{mainTitle}</h1>

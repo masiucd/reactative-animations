@@ -62,7 +62,7 @@ const Nav = () => {
 
   return (
     <NavStyles>
-      <Button className={cx(btnStyles)} onClick={toggle}>
+      <Button className={cx(btnStyles, "nav-sign-in-btn")} onClick={toggle}>
         Sign in
       </Button>
       <div className={cx("title", titleStyles(scrollDirection === "down"))}>

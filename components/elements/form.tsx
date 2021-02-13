@@ -65,7 +65,7 @@ const Form: React.FC<FormProps> = ({
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { delay: 0.2 } }}
-      className={cx(formStyles, className)}
+      className={cx(formStyles, className, "sign-in-form-2x")}
       onSubmit={(e) => {
         e.preventDefault()
       }}

@@ -4,7 +4,7 @@ import Head from "next/head"
 import Title from "@components/elements/title"
 import { Button } from "@styles/button"
 import { useToggle } from "@hooks/toggle"
-import { css } from "@emotion/css"
+import { css, cx } from "@emotion/css"
 import Gallery from "@components/gallery/gallery"
 
 const buttonStyles = css`
@@ -34,7 +34,7 @@ const GalleryPage: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Title mainTitle="Gallery" className={titleStyles} />
-      <Button className={buttonStyles} onClick={toggle}>
+      <Button className={cx(buttonStyles, "annoying-btn")} onClick={toggle}>
         show annoying box
       </Button>
       <RepeatedBox showAnnoyingBox={showAnnoyingBox} />
